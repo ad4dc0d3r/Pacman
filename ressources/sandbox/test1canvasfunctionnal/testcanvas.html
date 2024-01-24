@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      h1 {
+        text-align: center;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+    <title>Canva Sandbox</title>
+  </head>
+  <body>
+    <div>
+      <h1>Test box</h1>
+      <canvas id="gameBoard"></canvas>
+    </div>
+  </body>
+
+  <script>
+    // ---------------------Variables---------------------//
+    const canvas = document.getElementById("gameBoard");
+    const ctx = canvas.getContext("2d");
+    const tileSize = 32;
+    var count = 0;
+    const pacIm1 = new Image();
+    pacIm1.src = " ../pac0.png";
+    canvas.width = 640;//tileSize * 13;
+    canvas.height = 640;//tileSize * 9; // should depends on map.length
+    // const pacIm2 = new Image();
+    // pacIm2.src = " ../../images/pac1.png";
+    // const pacIm3 = new Image();
+    // pacIm1.src = " ../../images/pac2.png";
+    // const pacIm4 = new Image();
+    // pacIm1.src = " ../../images/pac1.png";
+
+    // function setCanvas(tileSize) {
+    //   canvas.width = tileSize * 13;
+    //   canvas.height = tileSize * 9; // should depends on map.length
+    // }
+
+    function draw(ctx) {
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      console.log(canvas.width);
+      console.log(canvas.height);
+      console.log("hi");
+      console.log("count: ", count);
+      count += 1;
+      ctx.drawImage(pacIm1, 0, 0, tileSize, tileSize);
+      console.log(pacIm1.src)
+    }
+
+    function runGame() {
+    //   setCanvas(tileSize);
+     
+    draw(ctx);
+    setMap(ctx); 
+      
+    }
+
+    function setMap(ctx) {
+      map = [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      ];
+
+      for (let row = 0; row < map.length; row++) {
+        for (let column = 0; column < map[row].length; column++) {
+          ctx.strokeStyle = "yellow";
+          ctx.strokeRect(column * tileSize, row * tileSize, tileSize, tileSize);
+          console.log(map[0].length);
+        }
+      }
+    }
+
+    function setPacman(ctx) {
+      console.log(pacIm2.src);
+
+      imageArray = [pacIm1, pacIm2, pacIm3, pacIm4];
+    }
+
+     setInterval(runGame, 1000 / 60);
+
+    runGame();
+  </script>
+</html>

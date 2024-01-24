@@ -1,6 +1,6 @@
 import TileMap from "./TileMap.js";
 
-const tileSize = 32;
+const tileSize = 30;
 const velocity = 1;
 const canvas = document.getElementById("gameBoard");
 const ctx = canvas.getContext('2d');
@@ -18,3 +18,4 @@ function gameLoop(){
 tileMap.setCanvasSize(canvas);
 setInterval(gameLoop, 1000);
 
+d

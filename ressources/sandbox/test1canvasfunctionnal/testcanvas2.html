@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <canvas id="gameBoard"></canvas>
+    </div>
+</body>
+
+
+
+
+
+<script>
+    const canvas = document.getElementById("gameBoard");
+    const ctx = canvas.getContext("2d");
+    const tileSize = 32;
+    var count = 0;
+    const pacIm1 = new Image();
+    pacIm1.onload = function() {
+        runGame(); // Start the game loop after the image is loaded
+    };
+    pacIm1.src = "../../images/pac0.png"; // Ensure correct path
+
+    function draw(ctx) {
+        ctx.fillStyle = "lightgrey";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        console.log("Drawing background");
+    }
+
+    function runGame() {
+        draw(ctx); // Draw background first
+        setMap(ctx); // Then draw the map
+        console.log("Drawing Pacman");
+        ctx.drawImage(pacIm1, 32, 32, tileSize, tileSize); // Draw Pacman
+    }
+
+    function setMap(ctx) {
+        // ...map drawing code...
+        console.log("Drawing map");
+    }
+    runGame();
+
+    // pacIm1.src = "../../images/pac0.png"; // Set the source after defining onload
+</script>
+</html>
